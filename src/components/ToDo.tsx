@@ -1,5 +1,38 @@
+import styled from "styled-components";
 import { Categories, customCategoryState, IToDo, toDoState } from "../atoms";
 import { useRecoilValue, useSetRecoilState } from "recoil";
+import { faSquare } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+const Container = styled.div`
+  margin-top: 20px;
+  margin-left: 10px;
+  display: flex;
+`;
+
+const List = styled.li`
+  list-style-type: none;
+`;
+
+const Item = styled.span`
+  margin-left: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  color: ${(props) => props.theme.textColor};
+  opacity: 0.8;
+`;
+
+const Button = styled.button`
+  margin-left: 15px;
+  height: 20px;
+  width: 60px;
+  border: none;
+  background-color: ${(props) => props.theme.cardBgColor};
+  color: ${(props) => props.theme.bgColor};
+  font-size: 15px;
+  border-radius: 10%;
+  cursor: pointer;
+`;
 
 function ToDo({ text, id, category }: IToDo) {
   const setToDos = useSetRecoilState(toDoState);
@@ -19,36 +52,44 @@ function ToDo({ text, id, category }: IToDo) {
     });
   };
   return (
-    <li>
-      <span>{text}</span>
-      {category !== Categories.DOING && (
-        <button name={Categories.DOING} onClick={onClick}>
-          Doing
-        </button>
-      )}
-      {category !== Categories.TO_DO && (
-        <button name={Categories.TO_DO} onClick={onClick}>
-          To Do
-        </button>
-      )}
-      {category !== Categories.DONE && (
-        <button name={Categories.DONE} onClick={onClick}>
-          Done
-        </button>
-      )}
-      {customCategories?.map(
-        (customCategory) =>
-          category !== customCategory.text && (
-            <button
-              key={customCategory.id}
-              name={customCategory.text}
-              onClick={onClick}
-            >
-              {customCategory.text}
-            </button>
-          )
-      )}
-    </li>
+    <Container>
+      <List>
+        <FontAwesomeIcon
+          icon={faSquare}
+          size="sm"
+          color="#483838"
+          opacity="0.8"
+        />
+        <Item>{text}</Item>
+        {category !== Categories.DOING && (
+          <Button name={Categories.DOING} onClick={onClick}>
+            Doing
+          </Button>
+        )}
+        {category !== Categories.TO_DO && (
+          <Button name={Categories.TO_DO} onClick={onClick}>
+            To Do
+          </Button>
+        )}
+        {category !== Categories.DONE && (
+          <Button name={Categories.DONE} onClick={onClick}>
+            Done
+          </Button>
+        )}
+        {customCategories?.map(
+          (customCategory) =>
+            category !== customCategory.text && (
+              <Button
+                key={customCategory.id}
+                name={customCategory.text}
+                onClick={onClick}
+              >
+                {customCategory.text}
+              </Button>
+            )
+        )}
+      </List>
+    </Container>
   );
 }
 
