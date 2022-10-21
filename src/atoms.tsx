@@ -9,7 +9,12 @@ export enum Categories {
 export interface IToDo {
   text: string;
   id: number;
-  category: Categories;
+  category: Categories | ICustomCategory["text"];
+}
+
+export interface ICustomCategory {
+  text: string;
+  id: number;
 }
 
 export const toDoState = atom<IToDo[]>({
@@ -17,7 +22,12 @@ export const toDoState = atom<IToDo[]>({
   default: [],
 });
 
-export const categoryState = atom<Categories>({
+export const customCategoryState = atom<ICustomCategory[]>({
+  key: "customCategory",
+  default: [],
+});
+
+export const categoryState = atom<Categories | ICustomCategory["text"]>({
   key: "category",
   default: Categories.TO_DO,
 });

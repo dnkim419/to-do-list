@@ -1,15 +1,16 @@
-import { Categories, IToDo, toDoState } from "../atoms";
-import { useSetRecoilState } from "recoil";
+import { Categories, customCategoryState, IToDo, toDoState } from "../atoms";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 function ToDo({ text, id, category }: IToDo) {
   const setToDos = useSetRecoilState(toDoState);
+  const customCategories = useRecoilValue(customCategoryState);
   const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const {
       currentTarget: { name },
     } = event;
     setToDos((oldToDos) => {
       const targetIndex = oldToDos.findIndex((toDo) => toDo.id === id);
-      const newToDo = { text, id, category: name as Categories };
+      const newToDo = { text, id, category: name };
       return [
         ...oldToDos.slice(0, targetIndex),
         newToDo,
@@ -34,6 +35,18 @@ function ToDo({ text, id, category }: IToDo) {
         <button name={Categories.DONE} onClick={onClick}>
           Done
         </button>
+      )}
+      {customCategories?.map(
+        (customCategory) =>
+          category !== customCategory.text && (
+            <button
+              key={customCategory.id}
+              name={customCategory.text}
+              onClick={onClick}
+            >
+              {customCategory.text}
+            </button>
+          )
       )}
     </li>
   );
