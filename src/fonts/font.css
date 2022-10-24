@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "BMHANNAPro";
+  font-display: fallback;
+
+  src: url("./BMHANNAPro.ttf") format("truetype"),
+    url("./BMHANNAPro.woff") format("woff"),
+    url("./BMHANNAPro.eot?iefix") format("embedded-opentype");
+
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BMHANNAAir";
+  font-display: fallback;
+
+  src: url("./BMHANNAAir.ttf") format("truetype"),
+    url("./BMHANNAAir.woff") format("woff"),
+    url("./BMHANNAAir.eot?iefix") format("embedded-opentype");
+
+  font-weight: 400;
+  font-style: normal;
+}

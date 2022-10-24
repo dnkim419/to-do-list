@@ -40,7 +40,7 @@ const Section = styled.div`
 `;
 
 const Select = styled.select`
-  margin-top: 40px;
+  margin-top: 60px;
   margin-left: 10px;
   height: 20px;
   width: 100px;
@@ -63,16 +63,16 @@ function ToDoList() {
   return (
     <Container>
       <Header>
-        <Title>To Dos</Title>
+        <Title>우아한할일들</Title>
       </Header>
       <Section>
         <CreateCustomCategory />
       </Section>
       <Section>
         <Select value={category} onInput={onInput}>
-          <Option value={Categories.TO_DO}>To Do</Option>
-          <Option value={Categories.DOING}>Doing</Option>
-          <Option value={Categories.DONE}>Done</Option>
+          <Option value={Categories.TO_DO}>해야함</Option>
+          <Option value={Categories.DOING}>하는 중</Option>
+          <Option value={Categories.DONE}>했음</Option>
           {customCategories?.map((category) => (
             <Option key={category.id} value={category.text}>
               {category.text}

@@ -24,7 +24,8 @@ const Button = styled.button`
   border: none;
   background-color: ${(props) => props.theme.cardBgColor};
   color: ${(props) => props.theme.bgColor};
-  font-size: 15px;
+  font-family: "BMHANNAAir";
+  font-size: 18px;
   border-radius: 10%;
   cursor: pointer;
 `;
@@ -49,9 +50,9 @@ function CreateCustomCategory() {
         {...register("customCategory", {
           required: "Write Custom Category here.",
         })}
-        placeholder="Make your own category"
+        placeholder="나만의 카테고리를 만들어보세요"
       />
-      <Button>Add</Button>
+      <Button>추가</Button>
     </form>
   );
 }

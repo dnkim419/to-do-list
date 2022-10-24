@@ -16,6 +16,7 @@ const List = styled.li`
 
 const Item = styled.span`
   margin-left: 20px;
+  font-family: "BMHANNAAir";
   font-size: 18px;
   font-weight: 600;
   color: ${(props) => props.theme.textColor};
@@ -29,6 +30,7 @@ const Button = styled.button`
   border: none;
   background-color: ${(props) => props.theme.cardBgColor};
   color: ${(props) => props.theme.bgColor};
+  font-family: "BMHANNAAir";
   font-size: 15px;
   border-radius: 10%;
   cursor: pointer;
@@ -63,17 +65,17 @@ function ToDo({ text, id, category }: IToDo) {
         <Item>{text}</Item>
         {category !== Categories.DOING && (
           <Button name={Categories.DOING} onClick={onClick}>
-            Doing
+            하는 중
           </Button>
         )}
         {category !== Categories.TO_DO && (
           <Button name={Categories.TO_DO} onClick={onClick}>
-            To Do
+            해야함
           </Button>
         )}
         {category !== Categories.DONE && (
           <Button name={Categories.DONE} onClick={onClick}>
-            Done
+            했음
           </Button>
         )}
         {customCategories?.map(

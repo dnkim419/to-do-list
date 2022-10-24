@@ -7,7 +7,7 @@ interface IForm {
   toDo: string;
 }
 
-const InputCustomCategory = styled.input`
+const InputToDo = styled.input`
   margin-left: 10px;
   height: 50px;
   width: 300px;
@@ -27,7 +27,8 @@ const Button = styled.button`
   border: none;
   background-color: ${(props) => props.theme.cardBgColor};
   color: ${(props) => props.theme.bgColor};
-  font-size: 15px;
+  font-family: "BMHANNAAir";
+  font-size: 18px;
   border-radius: 10%;
   cursor: pointer;
 `;
@@ -45,13 +46,13 @@ function CreateToDo() {
   };
   return (
     <form onSubmit={handleSubmit(handleValid)}>
-      <InputCustomCategory
+      <InputToDo
         {...register("toDo", {
           required: "Write To Do here.",
         })}
-        placeholder="Write a to do"
+        placeholder="할 일을 작성하세요"
       />
-      <Button>Add</Button>
+      <Button>추가</Button>
     </form>
   );
 }
